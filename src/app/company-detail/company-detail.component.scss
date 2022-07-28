@@ -1,0 +1,47 @@
+.company-container {
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 169px 0;
+
+    .img {
+
+        img {
+            height: 330px;
+            width: auto;
+        }
+    }
+
+    .info {
+        padding: 40px 0;
+        border-radius: 5px;
+        box-shadow: 0 1px 4px 0 rgb(0 0 0 / 20%);
+
+        .img-info-container {
+            padding-top: 10px;
+            text-align: center;
+            padding-bottom: 27px;
+
+            img {
+                height: 100px;
+                width: auto;
+            }
+        }
+
+        h3 {
+            padding: 20px;
+        }
+
+        p {
+            padding: 20px;
+
+            a {
+                text-decoration: none;
+                color: #4783e6;
+            }
+        }
+    }
+
+
+}

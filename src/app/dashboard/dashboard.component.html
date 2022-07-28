@@ -1,0 +1,74 @@
+<!-- nav -->
+<nav>
+  <!-- category container -->
+  <div class="category-container">
+    
+    <!-- select -->
+    <label for="cars">Choose a category:</label>
+
+    <select name="category" id="category"  
+            [(ngModel)]="userCategoryChoice"
+            (ngModelChange)="getUserCategoryChoice()"
+            >
+            <option *ngFor="let cat of categoryList" [value]="cat">{{cat}}</option>
+    </select>
+    <!-- select end-->
+
+  </div>
+  <!-- category container end-->
+
+  
+  <!-- checkbox -->
+  <div class="level-container" *ngFor="let level of levelsList">
+
+      <input type="checkbox" [value]="level.name"
+      [checked]="level.selected"
+      (change)="onChangeLevel($event)"
+      />
+
+      <label for="level">{{level.name}}</label>
+  </div>
+  <!-- checkbox end-->
+
+  <!-- button -->
+  <button (click)="getUserQuery()">search</button>
+  <!-- button end-->
+
+</nav>
+<!-- nav end-->
+
+<!-- main -->
+<main>
+  <!-- card container -->
+  <div class="card-container">
+
+    <!-- card -->
+    <div class="card" *ngFor="let jobs of jobsList">
+    
+      <!-- jobs list info -->
+      <ul>
+        <li class="company-name">{{jobs.name}}</li>
+        <li class="jobs-details">Company : {{jobs.company.name}}</li>
+        <li class="jobs-details">Location : {{jobs.locations[0].name}}</li>
+        <li class="jobs-details">Posted on : {{jobs.publication_date}}</li> <!-- to cut -->
+      </ul>
+      <!-- jobs list info end-->
+
+
+      <!-- view job button -->
+      <div>
+        <button routerLink="/jobs-detail/{{jobs.id}}">View job</button>
+      </div>    
+      <!-- view job button -->
+
+    </div>
+    <!-- card end-->
+  </div>
+  <!-- card container end-->
+</main>
+<!-- main end-->
+
+
+
+
+

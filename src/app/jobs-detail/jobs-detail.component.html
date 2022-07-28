@@ -1,0 +1,28 @@
+<!-- main  -->
+<main>
+    <!-- jobs details container -->
+    <div class="job-details-container">
+        <!-- title -->
+        <div class="title">
+            <a routerLink="/jobs-detail/:id/company-detail/{{data.company.id}}">{{data.company.name}}</a>
+            <h2>{{data.name}}</h2>
+        </div>
+        <!-- title end-->
+
+    
+        <!-- job description -->
+        <div [innerHTML]="data.contents"></div>
+        <!-- job description end-->
+
+        
+        <!-- link to company details -->
+        <button class="button" routerLink="/jobs-detail/:id/company-detail/{{data.company.id}}">View company details</button>
+        <!-- link to company details end-->
+
+    </div>
+    <!-- jobs details container end-->
+</main>
+<!-- main  end-->
+
+
+

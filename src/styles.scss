@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+img {
+    width: 100%;
+}
+
+// footer {
+//     position: sticky;
+//     width: 100%;
+//     bottom: 0;
+// }
+
+.hidden {
+    display: none;
+}
