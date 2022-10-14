@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "/projects/jobs-finder",
+    "public": "dist/jobs-finder",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -5,7 +5,7 @@ import { JobsDetailComponent } from './jobs-detail/jobs-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   {path: 'jobs-detail/:id', component: JobsDetailComponent},

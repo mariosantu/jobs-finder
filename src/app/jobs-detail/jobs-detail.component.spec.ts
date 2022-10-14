@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 
 import { JobsDetailComponent } from './jobs-detail.component';
 
@@ -6,9 +8,23 @@ describe('JobsDetailComponent', () => {
   let component: JobsDetailComponent;
   let fixture: ComponentFixture<JobsDetailComponent>;
 
+
   beforeEach(async () => {
+
+    let vmockActivatedRoute = {
+      snapshot: {
+        paramMap: {
+          get: () => {
+            return 1;
+          },
+        },
+      },
+    };
+
     await TestBed.configureTestingModule({
-      declarations: [ JobsDetailComponent ]
+      declarations: [ JobsDetailComponent ],
+      imports: [HttpClientModule],
+      providers: [{provide: ActivatedRoute, useValue: vmockActivatedRoute}]
     })
     .compileComponents();
   });
