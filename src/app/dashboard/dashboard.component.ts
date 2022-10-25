@@ -17,6 +17,8 @@ export class DashboardComponent implements OnInit {
 
 
   // nel caso si volesse alimentare la lista delle categorie
+  // scommentare il seguente categoryList e commentare quello
+  // impostato di default.
   // categoryList:string[] = ['Software Engineering',
   //                           'Accounting',
   //                           'Sales',
