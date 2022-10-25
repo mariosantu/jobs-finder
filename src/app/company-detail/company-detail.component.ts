@@ -12,9 +12,6 @@ import { CompanyDetailService } from '../services/company-detail.service';
 })
 export class CompanyDetailComponent implements OnInit {
 
-  // currentCompanyDetails?:any;
-
-  //test
   image = '';
   logo = '';
   landing_page ='';
@@ -29,15 +26,14 @@ export class CompanyDetailComponent implements OnInit {
     this._CompanyDetailService.getCompany(id).subscribe(
       (data:any) =>
       {
-        // this.currentCompanyDetails = data;
 
-        //test
         this.image = data.refs.f1_image;
         this.logo = data.refs.logo_image;
         this.landing_page = data.refs.landing_page;
         this.name = data.name;
         this.description = data.description;
         console.log(data);
+        
       }
     )
 

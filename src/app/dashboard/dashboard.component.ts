@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
 
   // nel caso si volesse alimentare la lista delle categorie
-  // scommentare il seguente categoryList e commentare quello
+  // decommentare il seguente categoryList e commentare quello
   // impostato di default.
   // categoryList:string[] = ['Software Engineering',
   //                           'Accounting',
@@ -33,34 +33,19 @@ export class DashboardComponent implements OnInit {
     {selected:true,name:"Internship"}
   ];
 
-  // categoryChoice:string = 'Software Engineering';
-  // levelChoice?:string;
-
-
   constructor(private _GetJobsService:GetJobsService, private _InternalJobService:InternalJobService) { }
 
   ngOnInit(): void {
     // input:string (default value)
+
     // all'avvio dell'applicazione il dashboard component chiama il servizio _GetJobsService e con la funzione getJobsService
     // ritorna un oggetto json 
-    // this._GetJobsService.getJobsService(this.categoryChoice).subscribe(
-    //   data=>
-    //   {
-    //     this.jobsList = data;
-    //     console.log(this.jobsList);
-    //     // console.log(data);
-    //   }
-    // )
 
     this._GetJobsService.getJobsService(this.defaultCategory, this.levelsList).subscribe(
       data=>
       {
-        // this.jobsList = data.results;
         this.jobsList = data.results;
         this._InternalJobService.addJobsList(this.jobsList);
-        // console.log(this.jobsList);
-        // console.log(this.jobsList);
-        // console.log(data);
       }
     )
   }
@@ -81,7 +66,7 @@ export class DashboardComponent implements OnInit {
   // }
 
   onChangeLevel($event:any) {
-    // console.log($event.target.value);
+
     const selectedLevel = $event.target.value;
     this.levelsList = this.levelsList.map((lvl) => {
       if(lvl.name == selectedLevel) {
@@ -90,7 +75,6 @@ export class DashboardComponent implements OnInit {
       return lvl;
     });
 
-    // console.log(this.levelsList);
   }
 
   getUserCategoryChoice() {
@@ -99,7 +83,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getUserQuery() {
-    // console.log(this.levelsList);
+
     var checkVoidLevel = false;
 
     if(this.userCategoryChoice == undefined) {
@@ -116,23 +100,12 @@ export class DashboardComponent implements OnInit {
       this._GetJobsService.getJobsService(this.userCategoryChoice, this.levelsList).subscribe(
         data=>
         {
-          // this.jobsList = data;
-          // console.log(this.jobsList);
-          // console.log(data);
-
           this.jobsList = data.results;
           this._InternalJobService.addJobsList(this.jobsList);
-          // console.log(this.jobsList);
         }
       );
     } else {
       alert('check required!');
     }
-    // console.log(this.userCategoryChoice);
   }
-
-  // getJobsDetails(job:any) {
-  //   console.log('getjobsdetails: ' + job);
-  // }
-
 }

@@ -9,9 +9,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GetJobsService {
 
-  // urlPreload:string = "https://www.themuse.com/api/public/jobs?page=10";
-  // urlPreload:string = "https://www.themuse.com/api/public/jobs?category=Software%20Engineering&level=Entry%20Level&level=Mid%20Level&level=Senior%20Level&level=management&level=Internship&page=10";
-  // urlPreload:string = `https://www.themuse.com/api/public/jobs?category=${this.categoryChoice}&level=Entry%20Level&level=Mid%20Level&level=Senior%20Level&level=management&level=Internship&page=10`;
   url?:string;
   level:string = '';
 
@@ -19,10 +16,12 @@ export class GetJobsService {
   constructor(private _httpclient: HttpClient) { }
 
   getJobsService(category:string, lev:any[]): Observable<any> {
+
     this.checkLvl(lev);
-    // this.urlPreload = `https://www.themuse.com/api/public/jobs?category=${category}&level=Entry%20Level&level=Mid%20Level&level=Senior%20Level&level=management&level=Internship&page=10`;
+    
     this.url = `https://www.themuse.com/api/public/jobs?category=${category}&${this.level}page=10`;
-    console.log('url = ' + this.url);
+    // console.log('url = ' + this.url);
+    
     return this._httpclient.get(this.url);
   }
 

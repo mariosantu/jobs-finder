@@ -4,11 +4,10 @@ Jobs finder è un'app pensata per ricercare lavori in base
 alla propria posizione e al livello professionale
 selezionabile tramite le apposite checkbox.
 
-Come richiesto inizialmente all'avvio dell'applicazione verrà
+Inizialmente all'avvio dell'applicazione verrà
 effettuata una ricerca dei lavori con categoria di default:
-Engineering, ma come spiegato nel file read me nella repo
-github del proggetto è possibile con piccole modifiche
-poter eseguire una ricerca anche in altri campi.
+Engineering (con piccole modifiche sarà possibile
+poter eseguire una ricerca anche in altri campi).
 
 Una volta effettuata la ricerca verranno visualizzati i vari
 lavori trovati e cliccando sul bottone "view Job" sarà
@@ -16,9 +15,66 @@ possibile visualizzare tutte le info riguardante in lavoro e
 tramite un altro bottone o cliccando sul nome dell'azienda
 visualizzare le informazioni su quest'ultima.
 
-## Specifiche di sviluppo
-Le funzionalità dell'app come le chiamate api
-### Configurazione e prova in locale
+## Come è stat sviluppata l'applicazione? 
+L'applicazione è stata sviluppata utilizzando il framework 
+Angular e Node.js.
+
+## Librerie esterne utilizzate :
+Non ci sono state librerie terze utilizzate, ma è stata 
+utilizzata l'api del sito "The muse" per ricavarne i dati,
+come ad esempio le categorie di lavoro e le relative offerte.
+
+## Funzionalità Applicazione: 
+Come già descritto al primo punto l'applicazione ha le suddette
+funzionalità con le seguenti caratteristiche:
+
+### Componenti: 
+  - App,
+  - Company-detail,
+  - Dashboard,
+  - header,
+  - Jobs-detail,
+  - page-not-found
+
+  #### App 
+    Ospita il componente header e il routing dell'app.
+
+  #### Header
+    Ha lo scopo di visualizzare l'intestazione dell'app.
+  #### Dashboard 
+    Ospita la navbar contenente i flitri e il bottone di ricerca
+    più il main contenente i lavori trovati.
+  #### Jobs-Detail
+    Ospita il dettaglio del lavoro selezionato dall'utente e il bottone
+    che rimanda l'utente al dettaglio della compagnia.
+  #### Company-detail
+    Ospita il dettaglio della compagnia e il link che rimanda alla 
+    landing page della stessa.
+    
+  #### Page-not-found
+    Viene visualizzato in caso di url non valido.
+
+### Servizi : 
+  - Company-detail-service,
+  - Get-jobs-service,
+  - Internal-job-service
+
+  #### Company-detail-service
+    Viene utilizzato (Company-detail-component) per effettuare la chiamata al server 
+    di the muse ricevendo i dettagli della compagnia selezionata dall'utente.
+ 
+ #### Get-jobs-service
+    Viene utilizzato (dashboard-component) per effettuare la chiamata al server 
+    di the muse ricevendo l'elenco delle offerte di lavoro filtrate tramite 
+    le scelte selezionate dall'utente.
+
+ #### Internal-job-service
+    Ha lo scopo di mantenere in memoria dell'applicazione la lista 
+    dei lavori onde evitare più richieste con lo stesso scopo al server
+    di the muse. 
+    Inoltre, ha la funzionalità di ritornare un lavoro specifico, presente nella lista,
+    selezionato dall'utente.
+##### Configurazione e prova in locale
 Per la configurazione si dovrà clonare la repo github del proggetto 
 e per prima cosa lanciare il comando da terminale `npm install` e 
 solo dopo il comando `ng serve --open` per la prova in locale dell'app.

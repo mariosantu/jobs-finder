@@ -21,21 +21,16 @@ export class JobsDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private GetJobsService: GetJobsService,
-    private location: Location,
-    private router: Router,
+    // private GetJobsService: GetJobsService,
+    // private location: Location,
+    // private router: Router,
     private _InternalJobService:InternalJobService
   ) { }
 
 
   ngOnInit(): void {
+    
     // inserire il servizio interno per ottenere job 
-    // this._InternalJobService.getJobsArchive().subscribe(
-    //   data => {console.log(data);}
-    // );
-
-    // this._InternalJobService.getJobsArchiveDue();
-
     const id = this.getJobId();
     this.data = this._InternalJobService.getJob(id);
     console.log('current job: ');

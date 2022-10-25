@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 export class CompanyDetailService {
 
   private url?: string;
-  // private currentCompany?:any;
 
   constructor(private _httpclient: HttpClient) { }
 
