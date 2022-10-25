@@ -9,11 +9,11 @@ import { InternalJobService } from '../services/internal-job.service';
 })
 export class DashboardComponent implements OnInit {
 
-  jobsList?: any[];
-  jobsDetail = this.jobsList;
-  categoryList:string[] = ['Software Engineering'];
-  defaultCategory:string = 'Software Engineering';
-  userCategoryChoice:string = this.defaultCategory;
+  
+  jobsList?: any[]; // serve ad archiviare la lista dei lavori scelti dall'utente
+  categoryList:string[] = ['Software Engineering']; // eventuale elenco di categorie di lavoro (esempio: da riga 22 a 26)
+  defaultCategory:string = 'Software Engineering'; // categoria di default selezionata ad avvio applicazione
+  userCategoryChoice:string = this.defaultCategory; // eventuale scelta di categoria da parte dell'utente (se categoryList è > 1)
 
 
   // nel caso si volesse alimentare la lista delle categorie
@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
   //                           'Design and UX'
   //                         ];
 
+  // lista dei livelli di competenza presenti su the muse
   levelsList = [
     {selected:true,name: "Entry Level"},
     {selected:true,name:"Mid Level"},
@@ -36,19 +37,29 @@ export class DashboardComponent implements OnInit {
   constructor(private _GetJobsService:GetJobsService, private _InternalJobService:InternalJobService) { }
 
   ngOnInit(): void {
-    // input:string (default value)
-
     // all'avvio dell'applicazione il dashboard component chiama il servizio _GetJobsService e con la funzione getJobsService
     // ritorna un oggetto json 
 
+    // input: stringa,array 
+    // output:json (jobsList)
     this._GetJobsService.getJobsService(this.defaultCategory, this.levelsList).subscribe(
       data=>
       {
         this.jobsList = data.results;
+        
+        //chiamo _InternalJobService per archiviare l'elenco delle offerte di lavoro mediante 
+        // il metodo addJobsList
+        // input: json 
+        // output: void
         this._InternalJobService.addJobsList(this.jobsList);
       }
     )
   }
+
+  // in caso di una lista di più categorie (categoryList) commentare la riga 14
+  // e decommentare da 22 a 26 e da riga 67 a 77 in modo da permettere all'utente
+  // di effettuare la ricerca secondo le varie categrie presenti in categoryList.
+  // I valori presenti in categoryList sono quelli utilizzati da the muse).
 
   // input:string, string[] 
   // con questa funzione l'utente inserisce un eventuale categoria e un livello di competenza 
@@ -65,6 +76,10 @@ export class DashboardComponent implements OnInit {
   //   )
   // }
 
+  // onChangeLevel ha lo scopo di controllare eventuali scelte 
+  // effettuate dall'utente sui livelli (Entry Level,Mid Level...).
+  // input: string 
+  // output: boolean
   onChangeLevel($event:any) {
 
     const selectedLevel = $event.target.value;

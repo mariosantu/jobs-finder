@@ -74,7 +74,7 @@ funzionalità con le seguenti caratteristiche:
     di the muse. 
     Inoltre, ha la funzionalità di ritornare un lavoro specifico, presente nella lista,
     selezionato dall'utente.
-##### Configurazione e prova in locale
+## Configurazione e prova in locale
 Per la configurazione si dovrà clonare la repo github del proggetto 
 e per prima cosa lanciare il comando da terminale `npm install` e 
 solo dopo il comando `ng serve --open` per la prova in locale dell'app.
