@@ -92,11 +92,15 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  // ha lo scopo di registrare la categoria scelta dall'utente
   getUserCategoryChoice() {
     this.userCategoryChoice;
     console.log(this.userCategoryChoice);
   }
 
+  // questa funzione primariamente controlla al momento della ricerca
+  // se la categoria sia stata scelta dall'utente e solo dopo attraverso
+  // il servizio getJobsService effettua la chiamta al server per ricavarne i dati 
   getUserQuery() {
 
     var checkVoidLevel = false;

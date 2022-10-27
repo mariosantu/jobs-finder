@@ -15,6 +15,8 @@ export class GetJobsService {
 
   constructor(private _httpclient: HttpClient) { }
 
+  // con questa funzione controllo e costruisco l'url
+  // relativo alla ricerca effettuata dall'utetnte
   getJobsService(category:string, lev:any[]): Observable<any> {
 
     this.checkLvl(lev);

@@ -11,12 +11,14 @@ export class CompanyDetailService {
 
   constructor(private _httpclient: HttpClient) { }
 
+  // con questa funzione costruisco l'url della compagnia selezionata
+  // dall'utente
   getCompany(id:number): any {
-    console.log(id);
-    //faccio la chiamata
-    // e ritorno in currentcompany
+    // console.log(id);
+
     this.url = `https://www.themuse.com/api/public/companies/${id}`;
-    console.log('url = ' + this.url);
+    // console.log('url = ' + this.url);
+
     return this._httpclient.get(this.url);
   }
 }
