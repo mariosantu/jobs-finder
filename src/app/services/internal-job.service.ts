@@ -7,8 +7,8 @@ import { Observable, of } from 'rxjs';
 })
 export class InternalJobService {
 
-  private jobsArchive?: any;
-  private currentJob?: any;  
+  public jobsArchive?: any;
+  public currentJob?: any;  
 
   constructor() { }
 
@@ -25,14 +25,21 @@ export class InternalJobService {
   // con questa funzione prendo il lavoro corrente 
   // selezionato dall'utente
   getJob(id:number): any {
+    let found = false;
     this.jobsArchive.forEach((element:any) => {
       this.currentJob = element;
-      
+
       if(element.id == id) {
+        found = true;
         this.currentJob = element;
       }
     });
-    return this.currentJob;
+
+    if(found) {
+      return this.currentJob;
+    } else {
+      return null;
+    }
   }
 
 
